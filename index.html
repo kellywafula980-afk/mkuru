@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mkurugenzi – Merch</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            background: #ffffff;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ---------- CUSTOM FONTS (optional) ---------- */
+        @font-face {
+            font-family: 'Astrid';
+            src: url('/wp-content/uploads/fonts/Astrid.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ---------- HEADER / NAV (simplified) ---------- */
+        .header-page {
+            position: relative;
+            z-index: 50;
+            background: #fff;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+        .header-page .logo img {
+            height: 50px;
+            width: auto;
+        }
+        .header-page .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .header-page .nav-links a {
+            color: #111;
+            transition: color 0.2s;
+        }
+        .header-page .nav-links a:hover {
+            color: #ce0146;
+        }
+        .header-page .nav-links a.active {
+            color: #ce0146;
+        }
+        .header-page .nav-icons {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.3rem;
+        }
+        .header-page .nav-icons a {
+            color: #222;
+            transition: color 0.2s;
+        }
+        .header-page .nav-icons a:hover {
+            color: #ce0146;
+        }
+
+        /* ---------- HERO SLIDER ---------- */
+        .hero-slider {
+            position: relative;
+            height: 800px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 0;
+            margin-top: 0;
+            padding-top: 0;
+            background: #ffffff;
+        }
+        .slider-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #ffffff;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            overflow: hidden;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        /* subtle overlay for text readability */
+        .slide .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            pointer-events: none;
+        }
+
+        /* hero text */
+        .hero-content {
+            position: absolute;
+            top: 70%;
+            left: 5%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: #fff;
+            max-width: 380px;
+            text-align: left;
+            opacity: 0;
+            animation: fadeSlideText 1s forwards;
+            animation-delay: 0.5s;
+        }
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.8rem;
+            margin: 0;
+            line-height: 0.85;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+        }
+        .hero-content p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.92);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeSlideText {
+            to {
+                opacity: 1;
+                transform: translateY(-50%);
+            }
+        }
+
+        /* ---------- CATEGORY BOXES ---------- */
+        .category-boxes {
+            background: #ffffff;
+            padding: 4rem 1rem 3rem;
+            margin-top: -70px;
+            position: relative;
+            z-index: 10;
+        }
+        .category-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .category-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            text-decoration: none;
+            transform: translateY(40px);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .category-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .category-box:hover {
+            transform: translateY(-8px);
+        }
+        .category-image {
+            width: 100%;
+            height: 712px;
+            border-radius: 22px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s ease, box-shadow 0.3s ease;
+        }
+        .category-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.40);
+            transition: background 0.3s ease;
+            z-index: 1;
+        }
+        .category-box:hover .category-image::before {
+            background: rgba(0, 0, 0, 0.20);
+        }
+        .category-title {
+            text-align: center;
+            font-family: 'Bebas Neue', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        /* ---------- PRODUCTS SECTION ---------- */
+        .products {
+            background: #fff;
+            padding: 3rem 1rem 4rem;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 2.5rem;
+            color: #111;
+        }
+        .product-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* ---------- PRODUCT CARD ---------- */
+        .fb-product-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeSlide 0.6s forwards;
+            animation-delay: calc(var(--i, 1) * 0.08s);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .fb-product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
+        }
+        @keyframes fadeSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fb-image-wrap {
+            position: relative;
+            display: block;
+            background: #f8f8f8;
+        }
+        .fb-image-wrap img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .fb-product-card:hover .fb-image-wrap img {
+            transform: scale(1.02);
+        }
+        .fb-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #ce0146;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .fb-product-info {
+            padding: 1rem 1rem 1.2rem;
+            text-align: center;
+        }
+        .fb-product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            margin: 0 0 0.4rem;
+            color: #111;
+            line-height: 1.3;
+        }
+        .fb-product-info .fb-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #111;
+        }
+        .fb-product-info .fb-price del {
+            font-weight: 400;
+            color: #999;
+            margin-right: 0.5rem;
+        }
+        .fb-product-info .fb-price ins {
+            text-decoration: none;
+            font-weight: 800;
+            color: #ce0146;
+        }
+        .fb-product-info .woocommerce-Price-currencySymbol {
+            font-size: 0.7em;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer-page {
+            background: #1a1a1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+        .footer-page a {
+            color: #fff;
+            transition: color 0.2s;
+        }
+        .footer-page a:hover {
+            color: #ce0146;
+        }
+        .footer-page .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-page .payment-icons img {
+            height: 30px;
+            width: auto;
+            filter: brightness(0.8);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1024px) {
+            .category-image {
+                height: 500px;
+            }
+        }
+        @media (max-width: 900px) {
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .category-image {
+                height: 380px;
+            }
+            .hero-slider {
+                height: 600px;
+            }
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-page .nav-links {
+                display: none;
+            }
+            .hero-slider {
+                height: 440px;
+            }
+            .hero-content {
+                top: 60%;
+                left: 4%;
+                max-width: 260px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 0.8rem;
+            }
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .category-image {
+                height: 340px;
+            }
+            .category-title {
+                font-size: 1.8rem;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1.2rem;
+            }
+            .fb-product-info h3 {
+                font-size: 0.95rem;
+            }
+            .fb-product-info .fb-price {
+                font-size: 1.1rem;
+            }
+            .footer-page .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-slider {
+                height: 340px;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            .category-image {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header-page">
+        <div class="logo">
+            <a href="#">
+                <img src="https://mkurugenzi.ke/wp-content/uploads/2024/04/black-1-of-1-scaled.png" alt="Mkurugenzi" style="height:50px; width:auto;">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Collections</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="nav-icons">
+            <a href="#" aria-label="Search"><i class="las la-search"></i></a>
+            <a href="#" aria-label="Wishlist"><i class="las la-heart"></i></a>
+            <a href="#" aria-label="Cart"><i class="las la-shopping-bag"></i></a>
+        </div>
+    </header>
+
+    <!-- ====== MAIN ====== -->
+    <main id="home-landing">
+
+        <!-- ====== HERO SLIDER ====== -->
+        <section class="hero-slider">
+            <div class="slider-wrapper">
+
+                <!-- slide 1 -->
+                <div class="slide active" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/guy.png');">
+                    <div class="overlay"></div>
+                </div>
+                <!-- slide 2 -->
+                <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/two.png');">
+                    <div class="overlay"></div>
+                </div>
+                <!-- slide 3 -->
+                <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/lady.png');">
+                    <div class="overlay"></div>
+                </div>
+                <!-- slide 4 -->
+                <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/group.png');">
+                    <div class="overlay"></div>
+                </div>
+                <!-- slide 5 -->
+                <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/tote-bag.png');">
+                    <div class="overlay"></div>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <h1>MORE THAN</h1>
+                <h1>JUST A BRAND</h1>
+                <p>Join The Movement</p>
+            </div>
+        </section>
+
+        <!-- ====== CATEGORY BOXES ====== -->
+        <section class="category-boxes">
+            <div class="category-grid">
+
+                <!-- Men -->
+                <a href="https://mkurugenzi.ke/product-category/men/" class="category-box fade-in">
+                    <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/Post.png');"></div>
+                    <span class="category-title">Men</span>
+                </a>
+
+                <!-- Unisex -->
+                <a href="https://mkurugenzi.ke/product-category/unisex/" class="category-box fade-in">
+                    <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/DSC_4576-e1768823717276.webp');"></div>
+                    <span class="category-title">Unisex</span>
+                </a>
+
+                <!-- Women -->
+                <a href="https://mkurugenzi.ke/product-category/women/" class="category-box fade-in">
+                    <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/bI.png');"></div>
+                    <span class="category-title">Women</span>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ====== FEATURED PRODUCTS ====== -->
+        <section class="products">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+
+                <!-- product 1 -->
+                <article class="fb-product-card" style="--i:1">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/Beanieblue.webp" alt="Beanie Hat Navy Blue" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Beanie Hat – Navy Blue</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;900.00</div>
+                    </div>
+                </article>
+
+                <!-- product 2 -->
+                <article class="fb-product-card" style="--i:2">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/01/Beaniegrey_52731fef-a4c2-4a8e-8bb6-eb5cc14d51e4.webp" alt="Beanie Hat Grey" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Beanie Hat – Grey</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;900.00</div>
+                    </div>
+                </article>
+
+                <!-- product 3 -->
+                <article class="fb-product-card" style="--i:3">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/01/Beaniebeige.webp" alt="Beanie Hat Beige" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Beanie Hat – Beige</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;900.00</div>
+                    </div>
+                </article>
+
+                <!-- product 4 -->
+                <article class="fb-product-card" style="--i:4">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/01/white-tote-bag-819x1024.webp" alt="Tote Bag White" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Tote Bag – White</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;850.00</div>
+                    </div>
+                </article>
+
+                <!-- product 5 – with badge -->
+                <article class="fb-product-card" style="--i:5">
+                    <a href="#" class="fb-image-wrap">
+                        <span class="fb-badge">NEW</span>
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/men-jungle-sweatpant-1-819x1024.png" alt="Sweat Pants Jungle" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Pants – Jungle</h3>
+                        <div class="fb-price">
+                            <del><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,500.00</del>
+                            <ins><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;2,500.00</ins>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 6 -->
+                <article class="fb-product-card" style="--i:6">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/MkurugenziSweatSuits-819x1024.webp" alt="Sweat Suits Gray" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Suits – Gray Snow Wash</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;6,500.00</div>
+                    </div>
+                </article>
+
+                <!-- product 7 -->
+                <article class="fb-product-card" style="--i:7">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/MkurugenziSweatSuits2-819x1024.webp" alt="Sweat Suit Beige" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Suit – Beige Snow Wash</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;6,500.00</div>
+                    </div>
+                </article>
+
+                <!-- product 8 -->
+                <article class="fb-product-card" style="--i:8">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/ladies-grey-sweatpant-1-819x1024.png" alt="Sweat Pants Grey" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Pants – Grey Snow Wash</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,500.00</div>
+                    </div>
+                </article>
+
+                <!-- product 9 -->
+                <article class="fb-product-card" style="--i:9">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/ladies-beige-sweatpant-1-819x1024.png" alt="Sweat Pants Beige" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Pants – Beige Snow Wash</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,500.00</div>
+                    </div>
+                </article>
+
+                <!-- product 10 – with badge -->
+                <article class="fb-product-card" style="--i:10">
+                    <a href="#" class="fb-image-wrap">
+                        <span class="fb-badge">NEW</span>
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/UnisexBottomJ.Green_-912x1024.jpg" alt="Sweat Pants Jungle Green" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Sweat Pants – Jungle Green</h3>
+                        <div class="fb-price">
+                            <del><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,500.00</del>
+                            <ins><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;2,500.00</ins>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 11 -->
+                <article class="fb-product-card" style="--i:11">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/01/BlackHoodie-819x1024.webp" alt="Hoodie Black" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>Hoodie – Black Excellence</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,000.00</div>
+                    </div>
+                </article>
+
+                <!-- product 12 -->
+                <article class="fb-product-card" style="--i:12">
+                    <a href="#" class="fb-image-wrap">
+                        <img src="https://mkurugenzi.ke/wp-content/uploads/2026/02/blacktshirt_79fe47d5-b4c9-4742-b593-2fa0f86024e8-819x1024.webp" alt="T-Shirt Makosa" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>T-Shirt – Makosa Ni Yangu</h3>
+                        <div class="fb-price"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;1,500.00</div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer-page">
+        <div class="footer-inner">
+            <div>
+                © 2026 Mkurugenzi. Designed by <a href="https://botavera.co.ke" target="_blank">Botavera</a>
+            </div>
+            <div class="payment-icons">
+                <img src="https://mkurugenzi.ke/wp-content/uploads/2024/04/h23-payment.png" alt="Payment methods" loading="lazy">
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== ICON LIBRARY (Line Awesome) ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+
+    <!-- ====== SLIDER SCRIPT ====== -->
+    <script>
+        // ---- Hero slider ----
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            let current = 0;
+
+            function nextSlide() {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }
+            setInterval(nextSlide, 4000);
+        })();
+
+        // ---- Category boxes fade-in on scroll ----
+        (function() {
+            const boxes = document.querySelectorAll('.category-box');
+            if (!boxes.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.25,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            boxes.forEach(box => observer.observe(box));
+        })();
+
+        // ---- (optional) product cards already use CSS animation on load ----
+        console.log('Mkurugenzi page ready.');
+    </script>
+
+</body>
+</html>
