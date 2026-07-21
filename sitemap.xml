@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://mkurugenzi-ke.onrender.com/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://mkurugenzi-ke.onrender.com/#category/men</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mkurugenzi-ke.onrender.com/#category/women</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mkurugenzi-ke.onrender.com/#category/unisex</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- You can also add product detail URLs if needed -->
+    <url>
+        <loc>https://mkurugenzi-ke.onrender.com/#product/1</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <!-- repeat for all product IDs 1-12 -->
+</urlset>
