@@ -7,7 +7,7 @@
     <meta name="google-site-verification" content="google75c684c803bcb3e8" />
     
     <!-- Primary Meta Tags -->
-    <title>Mkurugenzi – Premium Merch & Streetwear Brand in Kenya</title>
+    <title>Mkurugenzi – Premium Merch &amp; Streetwear Brand in Kenya</title>
     <meta name="description" content="Join the movement. Shop premium hoodies, sweatpants, beanies, and totes from Mkurugenzi – the Kenyan streetwear brand that defines style and quality.">
     <meta name="keywords" content="Mkurugenzi, streetwear Kenya, hoodies, sweatpants, beanies, tote bags, African fashion, premium merch">
     <link rel="canonical" href="https://mkurugenzi-ke.onrender.com/" />
@@ -15,15 +15,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mkurugenzi-ke.onrender.com/">
-    <meta property="og:title" content="Mkurugenzi – Premium Merch & Streetwear Brand in Kenya">
-    <meta property="og:description" content="Join the movement. Shop premium hoodies, sweatpants, beanies, and totes from Mkurugenzi – the Kenyan streetwear brand that defines style and quality.">
+    <meta property="og:title" content="Mkurugenzi – Premium Merch &amp; Streetwear Brand in Kenya">
+    <meta property="og:description" content="Join the movement. Shop premium hoodies, sweatpants, beanies, and totes from Mkurugenzi – the Kenyan streetwear brand.">
     <meta property="og:image" content="https://mkurugenzi-ke.onrender.com/images/hero1.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mkurugenzi – Premium Merch & Streetwear Brand in Kenya">
+    <meta name="twitter:title" content="Mkurugenzi – Premium Merch &amp; Streetwear Brand">
     <meta name="twitter:description" content="Join the movement. Shop premium hoodies, sweatpants, beanies, and totes from Mkurugenzi.">
     <meta name="twitter:image" content="https://mkurugenzi-ke.onrender.com/images/hero1.png">
     
@@ -43,7 +43,7 @@
     }
     </script>
     
-    <!-- JSON-LD: Products (all 12) -->
+    <!-- JSON-LD: Products list -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -65,11 +65,901 @@
     }
     </script>
 
-    <!-- ... your existing styles ... -->
-    <!-- (CSS code from previous version – keep unchanged) -->
-    <!-- I'll include the full CSS in the final file – but for brevity, I'll assume you copy it from the previous version -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: #ffffff; font-family: 'Playfair Display', serif; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
+        button { cursor: pointer; background: none; border: none; font-family: inherit; }
+
+        /* ===== HEADER ===== */
+        .header-page {
+            position: relative; z-index: 50; background: #fff;
+            padding: 0.5rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .header-page .logo img { height: 50px; width: auto; }
+        .header-page .nav-links {
+            display: flex; gap: 2rem;
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+            letter-spacing: 0.05em; text-transform: uppercase;
+        }
+        .header-page .nav-links a { color: #111; transition: color 0.2s; }
+        .header-page .nav-links a:hover,
+        .header-page .nav-links a.active { color: #ce0146; }
+        .header-page .nav-icons {
+            display: flex; gap: 1.2rem; font-size: 1.3rem;
+            align-items: center;
+        }
+        .header-page .nav-icons a { color: #222; transition: color 0.2s; }
+        .header-page .nav-icons a:hover { color: #ce0146; }
+        .header-page .nav-icons .cart-badge {
+            background: #ce0146; color: #fff; border-radius: 50%;
+            padding: 0.1rem 0.5rem; font-size: 0.7rem;
+            margin-left: -0.3rem; vertical-align: top;
+        }
+
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            position: relative; height: 800px; width: 100%;
+            overflow: hidden; border-radius: 0; background: #ffffff;
+        }
+        .slider-wrapper {
+            position: absolute; width: 100%; height: 100%;
+        }
+        .slide {
+            position: absolute; width: 100%; height: 100%; inset: 0;
+            background-size: cover; background-repeat: no-repeat;
+            background-position: center; background-color: #ffffff;
+            opacity: 0; transition: opacity 1s ease-in-out;
+        }
+        .slide.active { opacity: 1; }
+        .slide .overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.25);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: absolute; top: 70%; left: 5%;
+            transform: translateY(-50%); z-index: 2;
+            color: #fff; max-width: 380px; text-align: left;
+            opacity: 0; animation: fadeSlideText 1s forwards 0.5s;
+        }
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.8rem; margin: 0; line-height: 0.85;
+            letter-spacing: 0.06em; color: #ffffff;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+        }
+        .hero-content p {
+            margin-top: 0.5rem; font-size: 1.1rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: rgba(255,255,255,0.92);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+        @keyframes fadeSlideText { to { opacity: 1; transform: translateY(-50%); } }
+
+        /* ===== CATEGORY BOXES ===== */
+        .category-boxes {
+            background: #ffffff; padding: 4rem 1rem 3rem;
+            margin-top: -70px; position: relative; z-index: 10;
+        }
+        .category-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .category-box {
+            display: flex; flex-direction: column; gap: 0.8rem;
+            text-decoration: none;
+            transform: translateY(40px); opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .category-box.visible { opacity: 1; transform: translateY(0); }
+        .category-box:hover { transform: translateY(-8px); }
+        .category-image {
+            width: 100%; height: 712px; border-radius: 22px;
+            background-size: cover; background-repeat: no-repeat;
+            background-position: center; position: relative;
+            overflow: hidden; transition: transform 0.6s ease;
+        }
+        .category-image::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,0,0,0.40);
+            transition: background 0.3s ease; z-index: 1;
+        }
+        .category-box:hover .category-image::before {
+            background: rgba(0,0,0,0.20);
+        }
+        .category-title {
+            text-align: center;
+            font-family: 'Bebas Neue', serif;
+            font-size: 2.2rem; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: #111;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .view-container {
+            background: #fff;
+            padding: 2rem 1rem 4rem;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem; letter-spacing: 0.04em;
+            margin-bottom: 2.5rem; color: #111;
+        }
+        .product-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .fb-product-card {
+            background: #fff; border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+            transform: translateY(20px); opacity: 0;
+            animation: fadeSlide 0.6s forwards;
+            animation-delay: calc(var(--i, 1) * 0.08s);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .fb-product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.11);
+        }
+        @keyframes fadeSlide { to { opacity: 1; transform: translateY(0); } }
+
+        .fb-image-wrap {
+            position: relative; display: block; background: #f8f8f8;
+        }
+        .fb-image-wrap img {
+            width: 100%; height: auto;
+            aspect-ratio: 4 / 5; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .fb-product-card:hover .fb-image-wrap img { transform: scale(1.02); }
+        .fb-badge {
+            position: absolute; top: 14px; left: 14px;
+            background: #ce0146; color: #fff;
+            padding: 4px 14px; border-radius: 30px;
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            z-index: 2;
+        }
+        .fb-product-info {
+            padding: 1rem 1rem 1.2rem; text-align: center;
+        }
+        .fb-product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500; font-size: 1.1rem;
+            letter-spacing: 0.02em; margin: 0 0 0.4rem;
+            color: #111; line-height: 1.3;
+        }
+        .fb-product-info .fb-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700; color: #111;
+        }
+        .fb-product-info .fb-price del {
+            font-weight: 400; color: #999; margin-right: 0.5rem;
+        }
+        .fb-product-info .fb-price ins {
+            text-decoration: none; font-weight: 800; color: #ce0146;
+        }
+        .fb-product-info .woocommerce-Price-currencySymbol {
+            font-size: 0.7em; font-weight: 700;
+        }
+        .product-actions {
+            display: flex; justify-content: center; gap: 0.8rem;
+            margin-top: 0.6rem;
+        }
+        .product-actions button {
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+        }
+        .product-actions button.add-to-cart {
+            background: #111; color: #fff; border-color: #111;
+        }
+        .product-actions button.add-to-cart:hover {
+            background: #ce0146; border-color: #ce0146;
+        }
+        .product-actions button.wishlist-btn {
+            border-color: #ddd; color: #888;
+        }
+        .product-actions button.wishlist-btn.active {
+            color: #ce0146; border-color: #ce0146;
+        }
+        .product-actions button.wishlist-btn:hover {
+            border-color: #ce0146; color: #ce0146;
+        }
+
+        /* ===== PRODUCT DETAIL ===== */
+        .product-detail {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; gap: 3rem; padding: 2rem 1rem;
+            align-items: flex-start;
+        }
+        .product-detail .detail-image {
+            flex: 1 1 40%;
+        }
+        .product-detail .detail-image img {
+            width: 100%; border-radius: 20px;
+        }
+        .product-detail .detail-info {
+            flex: 1 1 50%;
+        }
+        .product-detail .detail-info h2 {
+            font-size: 2.5rem; font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+        .product-detail .detail-price {
+            font-size: 2rem; font-weight: 700; margin: 1rem 0;
+        }
+        .product-detail .detail-price del { color: #999; margin-right: 1rem; }
+        .product-detail .detail-price ins { color: #ce0146; text-decoration: none; }
+        .product-detail .detail-desc {
+            color: #555; line-height: 1.6; margin: 1rem 0;
+        }
+        .product-detail .detail-actions {
+            display: flex; gap: 1rem; margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .product-detail .detail-actions button {
+            padding: 0.8rem 2rem; border-radius: 30px;
+            font-weight: 600; font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .product-detail .detail-actions .add-cart-detail {
+            background: #111; color: #fff; border: none;
+        }
+        .product-detail .detail-actions .add-cart-detail:hover {
+            background: #ce0146;
+        }
+        .product-detail .detail-actions .wishlist-detail {
+            background: transparent; border: 2px solid #ddd;
+            color: #555;
+        }
+        .product-detail .detail-actions .wishlist-detail.active {
+            border-color: #ce0146; color: #ce0146;
+        }
+        .product-detail .detail-actions .wishlist-detail:hover {
+            border-color: #ce0146; color: #ce0146;
+        }
+        .back-link {
+            display: inline-block; margin: 1rem 0 0 1rem;
+            font-weight: 600; color: #ce0146;
+            cursor: pointer;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        /* ===== SIDE PANEL ===== */
+        .side-panel {
+            position: fixed; top: 0; right: -420px; width: 400px;
+            height: 100%; background: #fff; box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            transition: right 0.3s ease; z-index: 1000;
+            padding: 2rem 1.5rem; overflow-y: auto;
+        }
+        .side-panel.open { right: 0; }
+        .side-panel .close-panel {
+            font-size: 1.8rem; float: right; cursor: pointer;
+        }
+        .side-panel h2 { margin-bottom: 1.5rem; font-family: 'Bebas Neue', sans-serif; }
+        .side-panel .item {
+            display: flex; gap: 1rem; padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .side-panel .item img {
+            width: 60px; height: 60px; object-fit: cover;
+            border-radius: 8px;
+        }
+        .side-panel .item .info { flex: 1; }
+        .side-panel .item .info h4 { font-size: 1rem; }
+        .side-panel .item .info .price { font-weight: 700; }
+        .side-panel .item .remove { color: #ce0146; cursor: pointer; font-size: 0.9rem; }
+        .side-panel .total {
+            font-size: 1.4rem; font-weight: 700;
+            margin: 1.5rem 0; text-align: right;
+        }
+        .side-panel .empty-msg { color: #999; text-align: center; margin-top: 2rem; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .category-image { height: 500px; }
+        }
+        @media (max-width: 900px) {
+            .category-grid { grid-template-columns: 1fr 1fr; }
+            .category-image { height: 380px; }
+            .hero-slider { height: 600px; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .product-detail { flex-direction: column; }
+        }
+        @media (max-width: 768px) {
+            .header-page .nav-links { display: none; }
+            .hero-slider { height: 440px; }
+            .hero-content { top: 60%; left: 4%; max-width: 260px; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 0.8rem; }
+            .category-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .category-image { height: 340px; }
+            .category-title { font-size: 1.8rem; }
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.2rem; }
+            .fb-product-info h3 { font-size: 0.95rem; }
+            .fb-product-info .fb-price { font-size: 1.1rem; }
+            .side-panel { width: 100%; right: -100%; }
+        }
+        @media (max-width: 480px) {
+            .hero-slider { height: 340px; }
+            .hero-content h1 { font-size: 1.6rem; }
+            .category-image { height: 260px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- ... (rest of body same as before, just with updated alt text) ... -->
+
+    <!-- HEADER -->
+    <header class="header-page">
+        <div class="logo">
+            <a href="#" id="logo-link">
+                <img src="images/logo.png" alt="Mkurugenzi – home" style="height:50px; width:auto;">
+            </a>
+        </div>
+        <nav class="nav-links" id="main-nav">
+            <a href="#" data-view="home" class="active">Home</a>
+            <a href="#" data-view="collections">Collections</a>
+            <a href="#" data-view="contact">Contact</a>
+        </nav>
+        <div class="nav-icons">
+            <a href="#" id="search-toggle" aria-label="Search"><i class="las la-search"></i></a>
+            <a href="#" id="wishlist-toggle" aria-label="Wishlist"><i class="las la-heart"></i></a>
+            <a href="#" id="cart-toggle" aria-label="Cart">
+                <i class="las la-shopping-bag"></i>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main id="app-main"></main>
+
+    <!-- SIDE PANEL -->
+    <div class="side-panel" id="side-panel">
+        <span class="close-panel" id="close-panel">&times;</span>
+        <h2 id="panel-title">Cart</h2>
+        <div id="panel-content"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-page" style="background:#1a1a1a;color:rgba(255,255,255,0.7);padding:2rem 1.5rem;text-align:center;border-top:1px solid #333;">
+        <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
+            <div>© 2026 Mkurugenzi. Designed by <a href="https://botavera.co.ke" target="_blank" style="color:#fff;">Botavera</a></div>
+            <div><img src="images/payment.png" alt="Payment methods accepted" style="height:30px;width:auto;filter:brightness(0.8);"></div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        //  DATA – all images relative
+        // ============================================================
+        const products = [
+            { id: 1, name: 'Beanie Hat – Navy Blue', price: 900, sale: null, image: 'images/beanieblue.webp', category: 'unisex', description: 'Warm beanie hat in navy blue, one size fits most.' },
+            { id: 2, name: 'Beanie Hat – Grey', price: 900, sale: null, image: 'images/beaniegrey.webp', category: 'unisex', description: 'Classic grey beanie, perfect for any outfit.' },
+            { id: 3, name: 'Beanie Hat – Beige', price: 900, sale: null, image: 'images/beaniebeige.webp', category: 'unisex', description: 'Beige beanie hat, neutral and stylish.' },
+            { id: 4, name: 'Tote Bag – White', price: 850, sale: null, image: 'images/tote-bag-white.webp', category: 'unisex', description: 'Spacious white tote bag with Mkurugenzi branding.' },
+            { id: 5, name: 'Sweat Pants – Jungle', price: 3500, sale: 2500, image: 'images/sweatpants-jungle.png', category: 'men', description: 'Men\'s jungle print sweat pants, comfortable and trendy.' },
+            { id: 6, name: 'Sweat Suits – Gray Snow Wash', price: 6500, sale: null, image: 'images/sweatsuit-gray.webp', category: 'women', description: 'Women\'s gray snow wash sweat suit, soft and cozy.' },
+            { id: 7, name: 'Sweat Suit – Beige Snow Wash', price: 6500, sale: null, image: 'images/sweatsuit-beige.webp', category: 'women', description: 'Women\'s beige snow wash sweat suit, elegant and warm.' },
+            { id: 8, name: 'Sweat Pants – Grey Snow Wash', price: 3500, sale: null, image: 'images/sweatpants-grey.png', category: 'women', description: 'Women\'s grey snow wash sweat pants, relaxed fit.' },
+            { id: 9, name: 'Sweat Pants – Beige Snow Wash', price: 3500, sale: null, image: 'images/sweatpants-beige.png', category: 'women', description: 'Women\'s beige snow wash sweat pants, soft and stylish.' },
+            { id: 10, name: 'Sweat Pants – Jungle Green', price: 3500, sale: 2500, image: 'images/sweatpants-junglegreen.jpg', category: 'unisex', description: 'Unisex jungle green snow wash sweat pants.' },
+            { id: 11, name: 'Hoodie – Black Excellence', price: 3000, sale: null, image: 'images/hoodie-black.webp', category: 'unisex', description: 'Black hoodie with bold "Black Excellence" print.' },
+            { id: 12, name: 'T-Shirt – Makosa Ni Yangu', price: 1500, sale: null, image: 'images/tshirt-makosa.webp', category: 'unisex', description: 'Black T‑shirt with "Makosa Ni Yangu" statement.' }
+        ];
+
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let cart = [];
+        let wishlist = [];
+        let currentView = 'home';
+        let currentProductId = null;
+
+        // ============================================================
+        //  DOM REFS
+        // ============================================================
+        const app = document.getElementById('app-main');
+        const panel = document.getElementById('side-panel');
+        const panelTitle = document.getElementById('panel-title');
+        const panelContent = document.getElementById('panel-content');
+        const closePanel = document.getElementById('close-panel');
+        const cartToggle = document.getElementById('cart-toggle');
+        const wishlistToggle = document.getElementById('wishlist-toggle');
+        const cartCount = document.getElementById('cart-count');
+
+        // ============================================================
+        //  RENDER HELPERS
+        // ============================================================
+        function formatPrice(price) {
+            return 'KSh&nbsp;' + price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function renderProductCard(product, delay) {
+            const isNew = product.id === 5 || product.id === 10;
+            const salePrice = product.sale ? product.sale : product.price;
+            const hasSale = product.sale && product.sale < product.price;
+            return `
+                <article class="fb-product-card" style="--i:${delay || 1}">
+                    <a href="#" class="fb-image-wrap" data-product-id="${product.id}">
+                        ${isNew ? '<span class="fb-badge">NEW</span>' : ''}
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    </a>
+                    <div class="fb-product-info">
+                        <h3>${product.name}</h3>
+                        <div class="fb-price">
+                            ${hasSale ? `<del>${formatPrice(product.price)}</del> <ins>${formatPrice(salePrice)}</ins>` : formatPrice(salePrice)}
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                            <button class="wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" data-id="${product.id}">
+                                <i class="${wishlist.includes(product.id) ? 'las' : 'lar'} la-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderProductList(productsToRender) {
+            if (!productsToRender || productsToRender.length === 0) {
+                return `<p style="text-align:center;padding:3rem 0;color:#999;">No products found.</p>`;
+            }
+            return `<div class="product-grid">${productsToRender.map((p, i) => renderProductCard(p, i+1)).join('')}</div>`;
+        }
+
+        // ============================================================
+        //  VIEWS
+        // ============================================================
+        function renderHome() {
+            const heroHTML = `
+                <section class="hero-slider">
+                    <div class="slider-wrapper">
+                        <div class="slide active" style="background-image: url('images/hero1.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero2.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero3.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero4.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero5.png');"><div class="overlay"></div></div>
+                    </div>
+                    <div class="hero-content">
+                        <h1>MORE THAN</h1>
+                        <h1>JUST A BRAND</h1>
+                        <p>Join The Movement</p>
+                    </div>
+                </section>
+            `;
+
+            const categoryHTML = `
+                <section class="category-boxes">
+                    <div class="category-grid">
+                        <a href="#" class="category-box" data-category="men">
+                            <div class="category-image" style="background-image: url('images/cat-men.png');"></div>
+                            <span class="category-title">Men</span>
+                        </a>
+                        <a href="#" class="category-box" data-category="unisex">
+                            <div class="category-image" style="background-image: url('images/cat-unisex.webp');"></div>
+                            <span class="category-title">Unisex</span>
+                        </a>
+                        <a href="#" class="category-box" data-category="women">
+                            <div class="category-image" style="background-image: url('images/cat-women.png');"></div>
+                            <span class="category-title">Women</span>
+                        </a>
+                    </div>
+                </section>
+            `;
+
+            const productsHTML = `
+                <section class="view-container">
+                    <h2 class="section-title">Featured Products</h2>
+                    ${renderProductList(products)}
+                </section>
+            `;
+
+            app.innerHTML = heroHTML + categoryHTML + productsHTML;
+
+            initSlider();
+            observeCategories();
+            attachProductCardEvents();
+            attachCategoryEvents();
+            attachActionEvents();
+        }
+
+        function renderCategory(category) {
+            const filtered = products.filter(p => p.category === category);
+            app.innerHTML = `
+                <div class="view-container">
+                    <div style="max-width:1400px;margin:0 auto;padding:0 1rem;">
+                        <span class="back-link" id="back-home">← Back to Home</span>
+                        <h2 class="section-title" style="text-transform:capitalize;">${category}</h2>
+                        ${renderProductList(filtered)}
+                    </div>
+                </div>
+            `;
+            document.getElementById('back-home').addEventListener('click', () => navigateTo('home'));
+            attachProductCardEvents();
+            attachActionEvents();
+        }
+
+        function renderProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) { navigateTo('home'); return; }
+            const hasSale = product.sale && product.sale < product.price;
+            const salePrice = product.sale || product.price;
+            const inWishlist = wishlist.includes(product.id);
+            app.innerHTML = `
+                <div class="view-container">
+                    <div class="product-detail">
+                        <div class="detail-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="detail-info">
+                            <span class="back-link" id="back-detail">← Back</span>
+                            <h2>${product.name}</h2>
+                            <div class="detail-price">
+                                ${hasSale ? `<del>${formatPrice(product.price)}</del> <ins>${formatPrice(salePrice)}</ins>` : formatPrice(salePrice)}
+                            </div>
+                            <div class="detail-desc">${product.description || 'A premium Mkurugenzi product.'}</div>
+                            <div class="detail-actions">
+                                <button class="add-cart-detail" data-id="${product.id}">Add to Cart</button>
+                                <button class="wishlist-detail ${inWishlist ? 'active' : ''}" data-id="${product.id}">
+                                    <i class="${inWishlist ? 'las' : 'lar'} la-heart"></i> ${inWishlist ? 'In Wishlist' : 'Add to Wishlist'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('back-detail').addEventListener('click', () => navigateTo('home'));
+            document.querySelector('.add-cart-detail').addEventListener('click', (e) => {
+                const id = parseInt(e.target.dataset.id);
+                addToCart(id);
+            });
+            document.querySelector('.wishlist-detail').addEventListener('click', (e) => {
+                const id = parseInt(e.target.dataset.id);
+                toggleWishlist(id);
+                renderProductDetail(id);
+            });
+        }
+
+        function renderContact() {
+            app.innerHTML = `
+                <div class="view-container" style="max-width:800px;margin:0 auto;padding:4rem 1rem;text-align:center;">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p style="font-size:1.2rem;color:#555;">Reach out to us via WhatsApp or email.</p>
+                    <p style="margin-top:1rem;">
+                        <a href="https://api.whatsapp.com/send?phone=254716265661&text=Hi%2C%20I%20want%20to%20know%20more." target="_blank" style="color:#ce0146;font-weight:600;">WhatsApp</a>
+                        &nbsp;|&nbsp;
+                        <a href="mailto:info@mkurugenzi.ke" style="color:#ce0146;font-weight:600;">Email</a>
+                    </p>
+                </div>
+            `;
+        }
+
+        // ============================================================
+        //  NAVIGATION
+        // ============================================================
+        function navigateTo(view, param) {
+            currentView = view;
+            document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
+            const navLink = document.querySelector(`#main-nav a[data-view="${view}"]`);
+            if (navLink) navLink.classList.add('active');
+
+            if (view === 'home') renderHome();
+            else if (view === 'category' && param) renderCategory(param);
+            else if (view === 'product' && param) renderProductDetail(parseInt(param));
+            else if (view === 'contact') renderContact();
+            else renderHome();
+
+            panel.classList.remove('open');
+            if (view === 'home') window.location.hash = '';
+            else if (view === 'category') window.location.hash = `category/${param}`;
+            else if (view === 'product') window.location.hash = `product/${param}`;
+            else if (view === 'contact') window.location.hash = 'contact';
+        }
+
+        // ============================================================
+        //  EVENT BINDING HELPERS
+        // ============================================================
+        function attachProductCardEvents() {
+            document.querySelectorAll('.fb-image-wrap[data-product-id]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(el.dataset.productId);
+                    navigateTo('product', id);
+                });
+            });
+        }
+
+        function attachCategoryEvents() {
+            document.querySelectorAll('.category-box').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cat = el.dataset.category;
+                    navigateTo('category', cat);
+                });
+            });
+        }
+
+        function attachActionEvents() {
+            document.querySelectorAll('.add-to-cart, .add-cart-detail').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const id = parseInt(this.dataset.id);
+                    addToCart(id);
+                });
+            });
+            document.querySelectorAll('.wishlist-btn, .wishlist-detail').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const id = parseInt(this.dataset.id);
+                    toggleWishlist(id);
+                    if (currentView === 'home') renderHome();
+                    else if (currentView === 'category') renderCategory(window._lastCategory || 'unisex');
+                    else if (currentView === 'product') renderProductDetail(id);
+                });
+            });
+        }
+
+        // ============================================================
+        //  CART & WISHLIST
+        // ============================================================
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+            updateCartBadge();
+            alert(`${product.name} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartBadge();
+            updatePanelContent();
+        }
+
+        function toggleWishlist(productId) {
+            const idx = wishlist.indexOf(productId);
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+            } else {
+                wishlist.push(productId);
+            }
+            if (panel.classList.contains('open') && panelTitle.innerText === 'Wishlist') {
+                updatePanelContent();
+            }
+        }
+
+        function updateCartBadge() {
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.innerText = total;
+        }
+
+        function getCartTotal() {
+            return cart.reduce((sum, item) => {
+                const p = products.find(prod => prod.id === item.id);
+                return sum + (p ? (p.sale || p.price) * item.quantity : 0);
+            }, 0);
+        }
+
+        // ============================================================
+        //  SIDE PANEL
+        // ============================================================
+        function updatePanelContent() {
+            const title = panelTitle.innerText;
+            if (title === 'Cart') {
+                if (cart.length === 0) {
+                    panelContent.innerHTML = `<div class="empty-msg">Your cart is empty.</div>`;
+                    return;
+                }
+                let html = '';
+                cart.forEach(item => {
+                    const p = products.find(prod => prod.id === item.id);
+                    if (!p) return;
+                    const price = p.sale || p.price;
+                    html += `
+                        <div class="item">
+                            <img src="${p.image}" alt="${p.name}">
+                            <div class="info">
+                                <h4>${p.name}</h4>
+                                <div class="price">${formatPrice(price)} × ${item.quantity}</div>
+                            </div>
+                            <span class="remove" data-id="${item.id}">✕</span>
+                        </div>
+                    `;
+                });
+                html += `<div class="total">Total: ${formatPrice(getCartTotal())}</div>`;
+                panelContent.innerHTML = html;
+                panelContent.querySelectorAll('.remove').forEach(el => {
+                    el.addEventListener('click', function() {
+                        removeFromCart(parseInt(this.dataset.id));
+                    });
+                });
+            } else if (title === 'Wishlist') {
+                if (wishlist.length === 0) {
+                    panelContent.innerHTML = `<div class="empty-msg">Your wishlist is empty.</div>`;
+                    return;
+                }
+                let html = '';
+                wishlist.forEach(id => {
+                    const p = products.find(prod => prod.id === id);
+                    if (!p) return;
+                    html += `
+                        <div class="item">
+                            <img src="${p.image}" alt="${p.name}">
+                            <div class="info">
+                                <h4>${p.name}</h4>
+                                <div class="price">${formatPrice(p.sale || p.price)}</div>
+                            </div>
+                            <span class="remove" data-id="${p.id}">✕</span>
+                        </div>
+                    `;
+                });
+                panelContent.innerHTML = html;
+                panelContent.querySelectorAll('.remove').forEach(el => {
+                    el.addEventListener('click', function() {
+                        toggleWishlist(parseInt(this.dataset.id));
+                        updatePanelContent();
+                        if (currentView === 'home') renderHome();
+                        else if (currentView === 'category') renderCategory(window._lastCategory || 'unisex');
+                        else if (currentView === 'product') renderProductDetail(parseInt(this.dataset.id));
+                    });
+                });
+            }
+        }
+
+        function openPanel(type) {
+            panelTitle.innerText = type === 'cart' ? 'Cart' : 'Wishlist';
+            panel.classList.add('open');
+            updatePanelContent();
+        }
+
+        closePanel.addEventListener('click', () => panel.classList.remove('open'));
+        cartToggle.addEventListener('click', (e) => { e.preventDefault(); openPanel('cart'); });
+        wishlistToggle.addEventListener('click', (e) => { e.preventDefault(); openPanel('wishlist'); });
+
+        // ============================================================
+        //  SEARCH
+        // ============================================================
+        document.getElementById('search-toggle').addEventListener('click', (e) => {
+            e.preventDefault();
+            const searchTerm = prompt('Search for products:');
+            if (searchTerm && searchTerm.trim()) {
+                const results = products.filter(p =>
+                    p.name.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
+                    p.category.toLowerCase().includes(searchTerm.trim().toLowerCase())
+                );
+                if (results.length === 0) {
+                    alert('No products found.');
+                } else {
+                    app.innerHTML = `
+                        <div class="view-container">
+                            <div style="max-width:1400px;margin:0 auto;padding:0 1rem;">
+                                <span class="back-link" id="back-search">← Back to Home</span>
+                                <h2 class="section-title">Search Results for "${searchTerm.trim()}"</h2>
+                                ${renderProductList(results)}
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('back-search').addEventListener('click', () => navigateTo('home'));
+                    attachProductCardEvents();
+                    attachActionEvents();
+                }
+            }
+        });
+
+        // ============================================================
+        //  HERO SLIDER
+        // ============================================================
+        let sliderInterval;
+        function initSlider() {
+            if (sliderInterval) clearInterval(sliderInterval);
+            const slides = document.querySelectorAll('.slide');
+            if (!slides.length) return;
+            let current = 0;
+            function nextSlide() {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }
+            sliderInterval = setInterval(nextSlide, 4000);
+        }
+
+        // ============================================================
+        //  CATEGORY OBSERVER
+        // ============================================================
+        function observeCategories() {
+            const boxes = document.querySelectorAll('.category-box');
+            if (!boxes.length) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+            boxes.forEach(box => observer.observe(box));
+        }
+
+        // ============================================================
+        //  ROUTE HANDLING (hash change)
+        // ============================================================
+        function handleHash() {
+            const hash = window.location.hash.slice(1) || '';
+            if (hash.startsWith('category/')) {
+                const cat = hash.split('/')[1];
+                if (['men', 'women', 'unisex'].includes(cat)) {
+                    window._lastCategory = cat;
+                    navigateTo('category', cat);
+                }
+            } else if (hash.startsWith('product/')) {
+                const id = parseInt(hash.split('/')[1]);
+                if (!isNaN(id)) navigateTo('product', id);
+            } else if (hash === 'contact') {
+                navigateTo('contact');
+            } else {
+                navigateTo('home');
+            }
+        }
+
+        window.addEventListener('hashchange', handleHash);
+
+        // ============================================================
+        //  LOGO & NAV LINKS
+        // ============================================================
+        document.getElementById('logo-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateTo('home');
+        });
+
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const view = link.dataset.view;
+                if (view === 'home') navigateTo('home');
+                else if (view === 'collections') {
+                    navigateTo('home');
+                    setTimeout(() => {
+                        document.querySelector('.category-boxes').scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                } else if (view === 'contact') navigateTo('contact');
+            });
+        });
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        if (window.location.hash) {
+            handleHash();
+        } else {
+            navigateTo('home');
+        }
+    </script>
 </body>
 </html>

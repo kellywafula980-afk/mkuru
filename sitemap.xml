@@ -21,11 +21,17 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- You can also add product detail URLs if needed -->
-    <url>
-        <loc>https://mkurugenzi-ke.onrender.com/#product/1</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <!-- repeat for all product IDs 1-12 -->
+    <!-- Product detail pages (hash-based) -->
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/1</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/2</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/3</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/4</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/5</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/6</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/7</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/8</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/9</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/10</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/11</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mkurugenzi-ke.onrender.com/#product/12</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
