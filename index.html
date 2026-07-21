@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mkurugenzi – Merch</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <!-- Line Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
     <style>
-        /* ---------- RESET & BASE ---------- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { background: #ffffff; font-family: 'Playfair Display', serif; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
         img { display: block; max-width: 100%; }
         button { cursor: pointer; background: none; border: none; font-family: inherit; }
 
-        /* ---------- HEADER ---------- */
         .header-page {
             position: relative; z-index: 50; background: #fff;
             padding: 0.5rem 1.5rem;
@@ -47,9 +43,7 @@
             padding: 0.1rem 0.5rem; font-size: 0.7rem;
             margin-left: -0.3rem; vertical-align: top;
         }
-        .search-input-mobile { display: none; }
 
-        /* ---------- HERO SLIDER ---------- */
         .hero-slider {
             position: relative; height: 800px; width: 100%;
             overflow: hidden; border-radius: 0; background: #ffffff;
@@ -59,7 +53,7 @@
         }
         .slide {
             position: absolute; width: 100%; height: 100%; inset: 0;
-            background-size: contain; background-repeat: no-repeat;
+            background-size: cover; background-repeat: no-repeat;
             background-position: center; background-color: #ffffff;
             opacity: 0; transition: opacity 1s ease-in-out;
         }
@@ -89,7 +83,6 @@
         }
         @keyframes fadeSlideText { to { opacity: 1; transform: translateY(-50%); } }
 
-        /* ---------- CATEGORY BOXES ---------- */
         .category-boxes {
             background: #ffffff; padding: 4rem 1rem 3rem;
             margin-top: -70px; position: relative; z-index: 10;
@@ -129,7 +122,6 @@
             color: #111;
         }
 
-        /* ---------- PRODUCTS / VIEW CONTAINER ---------- */
         .view-container {
             background: #fff;
             padding: 2rem 1rem 4rem;
@@ -147,7 +139,6 @@
             gap: 2rem;
         }
 
-        /* ---------- PRODUCT CARD ---------- */
         .fb-product-card {
             background: #fff; border-radius: 18px;
             overflow: hidden;
@@ -232,7 +223,6 @@
             border-color: #ce0146; color: #ce0146;
         }
 
-        /* ---------- PRODUCT DETAIL VIEW ---------- */
         .product-detail {
             max-width: 1200px; margin: 0 auto;
             display: flex; gap: 3rem; padding: 2rem 1rem;
@@ -291,7 +281,6 @@
         }
         .back-link:hover { text-decoration: underline; }
 
-        /* ---------- CART / WISHLIST OVERLAY (simple) ---------- */
         .side-panel {
             position: fixed; top: 0; right: -420px; width: 400px;
             height: 100%; background: #fff; box-shadow: -4px 0 20px rgba(0,0,0,0.15);
@@ -322,20 +311,6 @@
         }
         .side-panel .empty-msg { color: #999; text-align: center; margin-top: 2rem; }
 
-        /* ---------- SEARCH BAR ---------- */
-        .search-bar {
-            display: flex; justify-content: center; padding: 1rem;
-            max-width: 600px; margin: 0 auto;
-        }
-        .search-bar input {
-            width: 100%; padding: 0.8rem 1.2rem;
-            border: 2px solid #ddd; border-radius: 40px;
-            font-size: 1rem; outline: none;
-            transition: border 0.2s;
-        }
-        .search-bar input:focus { border-color: #ce0146; }
-
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 1024px) {
             .category-image { height: 500px; }
         }
@@ -348,7 +323,6 @@
         }
         @media (max-width: 768px) {
             .header-page .nav-links { display: none; }
-            .header-page .search-input-mobile { display: block; flex: 1; }
             .hero-slider { height: 440px; }
             .hero-content { top: 60%; left: 4%; max-width: 260px; }
             .hero-content h1 { font-size: 2rem; }
@@ -370,11 +344,11 @@
 </head>
 <body>
 
-    <!-- ====== HEADER ====== -->
+    <!-- HEADER -->
     <header class="header-page">
         <div class="logo">
             <a href="#" id="logo-link">
-                <img src="https://mkurugenzi.ke/wp-content/uploads/2024/04/black-1-of-1-scaled.png" alt="Mkurugenzi" style="height:50px; width:auto;">
+                <img src="images/logo.png" alt="Mkurugenzi" style="height:50px; width:auto;">
             </a>
         </div>
         <nav class="nav-links" id="main-nav">
@@ -392,47 +366,41 @@
         </div>
     </header>
 
-    <!-- ====== MAIN VIEW ====== -->
-    <main id="app-main">
-        <!-- Views will be injected here -->
-    </main>
+    <!-- MAIN -->
+    <main id="app-main"></main>
 
-    <!-- ====== SIDE PANEL (CART / WISHLIST) ====== -->
+    <!-- SIDE PANEL -->
     <div class="side-panel" id="side-panel">
         <span class="close-panel" id="close-panel">&times;</span>
         <h2 id="panel-title">Cart</h2>
         <div id="panel-content"></div>
     </div>
 
-    <!-- ====== FOOTER ====== -->
+    <!-- FOOTER -->
     <footer class="footer-page" style="background:#1a1a1a;color:rgba(255,255,255,0.7);padding:2rem 1.5rem;text-align:center;border-top:1px solid #333;">
         <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
-            <div>
-                © 2026 Mkurugenzi. Designed by <a href="https://botavera.co.ke" target="_blank" style="color:#fff;">Botavera</a>
-            </div>
-            <div>
-                <img src="https://mkurugenzi.ke/wp-content/uploads/2024/04/h23-payment.png" alt="Payment methods" style="height:30px;width:auto;filter:brightness(0.8);">
-            </div>
+            <div>© 2026 Mkurugenzi. Designed by <a href="https://botavera.co.ke" target="_blank" style="color:#fff;">Botavera</a></div>
+            <div><img src="images/payment.png" alt="Payment methods" style="height:30px;width:auto;filter:brightness(0.8);"></div>
         </div>
     </footer>
 
     <script>
         // ============================================================
-        //  DATA – product list extracted from the static page
+        //  DATA – all images now use relative paths
         // ============================================================
         const products = [
-            { id: 1, name: 'Beanie Hat – Navy Blue', price: 900, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/Beanieblue.webp', category: 'unisex', description: 'Warm beanie hat in navy blue, one size fits most.' },
-            { id: 2, name: 'Beanie Hat – Grey', price: 900, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/01/Beaniegrey_52731fef-a4c2-4a8e-8bb6-eb5cc14d51e4.webp', category: 'unisex', description: 'Classic grey beanie, perfect for any outfit.' },
-            { id: 3, name: 'Beanie Hat – Beige', price: 900, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/01/Beaniebeige.webp', category: 'unisex', description: 'Beige beanie hat, neutral and stylish.' },
-            { id: 4, name: 'Tote Bag – White', price: 850, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/01/white-tote-bag-819x1024.webp', category: 'unisex', description: 'Spacious white tote bag with Mkurugenzi branding.' },
-            { id: 5, name: 'Sweat Pants – Jungle', price: 3500, sale: 2500, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/men-jungle-sweatpant-1-819x1024.png', category: 'men', description: 'Men\'s jungle print sweat pants, comfortable and trendy.' },
-            { id: 6, name: 'Sweat Suits – Gray Snow Wash', price: 6500, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/MkurugenziSweatSuits-819x1024.webp', category: 'women', description: 'Women\'s gray snow wash sweat suit, soft and cozy.' },
-            { id: 7, name: 'Sweat Suit – Beige Snow Wash', price: 6500, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/MkurugenziSweatSuits2-819x1024.webp', category: 'women', description: 'Women\'s beige snow wash sweat suit, elegant and warm.' },
-            { id: 8, name: 'Sweat Pants – Grey Snow Wash', price: 3500, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/ladies-grey-sweatpant-1-819x1024.png', category: 'women', description: 'Women\'s grey snow wash sweat pants, relaxed fit.' },
-            { id: 9, name: 'Sweat Pants – Beige Snow Wash', price: 3500, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/ladies-beige-sweatpant-1-819x1024.png', category: 'women', description: 'Women\'s beige snow wash sweat pants, soft and stylish.' },
-            { id: 10, name: 'Sweat Pants – Jungle Green', price: 3500, sale: 2500, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/UnisexBottomJ.Green_-912x1024.jpg', category: 'unisex', description: 'Unisex jungle green snow wash sweat pants.' },
-            { id: 11, name: 'Hoodie – Black Excellence', price: 3000, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/01/BlackHoodie-819x1024.webp', category: 'unisex', description: 'Black hoodie with bold "Black Excellence" print.' },
-            { id: 12, name: 'T-Shirt – Makosa Ni Yangu', price: 1500, sale: null, image: 'https://mkurugenzi.ke/wp-content/uploads/2026/02/blacktshirt_79fe47d5-b4c9-4742-b593-2fa0f86024e8-819x1024.webp', category: 'unisex', description: 'Black T‑shirt with "Makosa Ni Yangu" statement.' }
+            { id: 1, name: 'Beanie Hat – Navy Blue', price: 900, sale: null, image: 'images/beanieblue.webp', category: 'unisex', description: 'Warm beanie hat in navy blue, one size fits most.' },
+            { id: 2, name: 'Beanie Hat – Grey', price: 900, sale: null, image: 'images/beaniegrey.webp', category: 'unisex', description: 'Classic grey beanie, perfect for any outfit.' },
+            { id: 3, name: 'Beanie Hat – Beige', price: 900, sale: null, image: 'images/beaniebeige.webp', category: 'unisex', description: 'Beige beanie hat, neutral and stylish.' },
+            { id: 4, name: 'Tote Bag – White', price: 850, sale: null, image: 'images/tote-bag-white.webp', category: 'unisex', description: 'Spacious white tote bag with Mkurugenzi branding.' },
+            { id: 5, name: 'Sweat Pants – Jungle', price: 3500, sale: 2500, image: 'images/sweatpants-jungle.png', category: 'men', description: 'Men\'s jungle print sweat pants, comfortable and trendy.' },
+            { id: 6, name: 'Sweat Suits – Gray Snow Wash', price: 6500, sale: null, image: 'images/sweatsuit-gray.webp', category: 'women', description: 'Women\'s gray snow wash sweat suit, soft and cozy.' },
+            { id: 7, name: 'Sweat Suit – Beige Snow Wash', price: 6500, sale: null, image: 'images/sweatsuit-beige.webp', category: 'women', description: 'Women\'s beige snow wash sweat suit, elegant and warm.' },
+            { id: 8, name: 'Sweat Pants – Grey Snow Wash', price: 3500, sale: null, image: 'images/sweatpants-grey.png', category: 'women', description: 'Women\'s grey snow wash sweat pants, relaxed fit.' },
+            { id: 9, name: 'Sweat Pants – Beige Snow Wash', price: 3500, sale: null, image: 'images/sweatpants-beige.png', category: 'women', description: 'Women\'s beige snow wash sweat pants, soft and stylish.' },
+            { id: 10, name: 'Sweat Pants – Jungle Green', price: 3500, sale: 2500, image: 'images/sweatpants-junglegreen.jpg', category: 'unisex', description: 'Unisex jungle green snow wash sweat pants.' },
+            { id: 11, name: 'Hoodie – Black Excellence', price: 3000, sale: null, image: 'images/hoodie-black.webp', category: 'unisex', description: 'Black hoodie with bold "Black Excellence" print.' },
+            { id: 12, name: 'T-Shirt – Makosa Ni Yangu', price: 1500, sale: null, image: 'images/tshirt-makosa.webp', category: 'unisex', description: 'Black T‑shirt with "Makosa Ni Yangu" statement.' }
         ];
 
         // ============================================================
@@ -463,7 +431,7 @@
         }
 
         function renderProductCard(product, delay) {
-            const isNew = product.id === 5 || product.id === 10; // just for demo
+            const isNew = product.id === 5 || product.id === 10;
             const salePrice = product.sale ? product.sale : product.price;
             const hasSale = product.sale && product.sale < product.price;
             return `
@@ -502,11 +470,11 @@
             const heroHTML = `
                 <section class="hero-slider">
                     <div class="slider-wrapper">
-                        <div class="slide active" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/guy.png');"><div class="overlay"></div></div>
-                        <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/two.png');"><div class="overlay"></div></div>
-                        <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/lady.png');"><div class="overlay"></div></div>
-                        <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/group.png');"><div class="overlay"></div></div>
-                        <div class="slide" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/tote-bag.png');"><div class="overlay"></div></div>
+                        <div class="slide active" style="background-image: url('images/hero1.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero2.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero3.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero4.png');"><div class="overlay"></div></div>
+                        <div class="slide" style="background-image: url('images/hero5.png');"><div class="overlay"></div></div>
                     </div>
                     <div class="hero-content">
                         <h1>MORE THAN</h1>
@@ -520,15 +488,15 @@
                 <section class="category-boxes">
                     <div class="category-grid">
                         <a href="#" class="category-box" data-category="men">
-                            <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/Post.png');"></div>
+                            <div class="category-image" style="background-image: url('images/cat-men.png');"></div>
                             <span class="category-title">Men</span>
                         </a>
                         <a href="#" class="category-box" data-category="unisex">
-                            <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/DSC_4576-e1768823717276.webp');"></div>
+                            <div class="category-image" style="background-image: url('images/cat-unisex.webp');"></div>
                             <span class="category-title">Unisex</span>
                         </a>
                         <a href="#" class="category-box" data-category="women">
-                            <div class="category-image" style="background-image: url('https://mkurugenzi.ke/wp-content/uploads/2026/01/bI.png');"></div>
+                            <div class="category-image" style="background-image: url('images/cat-women.png');"></div>
                             <span class="category-title">Women</span>
                         </a>
                     </div>
@@ -544,25 +512,10 @@
 
             app.innerHTML = heroHTML + categoryHTML + productsHTML;
 
-            // re-run slider
             initSlider();
-
-            // re-run observer for category boxes
             observeCategories();
-
-            // attach product click events for detail view
             attachProductCardEvents();
-
-            // attach category filter events
-            document.querySelectorAll('.category-box').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const cat = el.dataset.category;
-                    navigateTo('category', cat);
-                });
-            });
-
-            // attach add to cart / wishlist events (delegation)
+            attachCategoryEvents();
             attachActionEvents();
         }
 
@@ -612,7 +565,6 @@
                 </div>
             `;
             document.getElementById('back-detail').addEventListener('click', () => navigateTo('home'));
-            // attach detail actions
             document.querySelector('.add-cart-detail').addEventListener('click', (e) => {
                 const id = parseInt(e.target.dataset.id);
                 addToCart(id);
@@ -620,7 +572,7 @@
             document.querySelector('.wishlist-detail').addEventListener('click', (e) => {
                 const id = parseInt(e.target.dataset.id);
                 toggleWishlist(id);
-                renderProductDetail(id); // re-render to reflect
+                renderProductDetail(id);
             });
         }
 
@@ -643,7 +595,6 @@
         // ============================================================
         function navigateTo(view, param) {
             currentView = view;
-            // update nav active
             document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
             const navLink = document.querySelector(`#main-nav a[data-view="${view}"]`);
             if (navLink) navLink.classList.add('active');
@@ -654,10 +605,7 @@
             else if (view === 'contact') renderContact();
             else renderHome();
 
-            // close side panel if open
             panel.classList.remove('open');
-
-            // update URL hash (optional, for SPA navigation)
             if (view === 'home') window.location.hash = '';
             else if (view === 'category') window.location.hash = `category/${param}`;
             else if (view === 'product') window.location.hash = `product/${param}`;
@@ -677,30 +625,36 @@
             });
         }
 
+        function attachCategoryEvents() {
+            document.querySelectorAll('.category-box').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cat = el.dataset.category;
+                    navigateTo('category', cat);
+                });
+            });
+        }
+
         function attachActionEvents() {
-            // Add to cart buttons (delegation)
             document.querySelectorAll('.add-to-cart, .add-cart-detail').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const id = parseInt(this.dataset.id);
                     addToCart(id);
                 });
             });
-
-            // Wishlist buttons
             document.querySelectorAll('.wishlist-btn, .wishlist-detail').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const id = parseInt(this.dataset.id);
                     toggleWishlist(id);
-                    // refresh product card if on same page (re-render view)
                     if (currentView === 'home') renderHome();
-                    else if (currentView === 'category') renderCategory(currentView === 'category' ? window._lastCategory : 'unisex');
+                    else if (currentView === 'category') renderCategory(window._lastCategory || 'unisex');
                     else if (currentView === 'product') renderProductDetail(id);
                 });
             });
         }
 
         // ============================================================
-        //  CART & WISHLIST LOGIC
+        //  CART & WISHLIST
         // ============================================================
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
@@ -712,7 +666,6 @@
                 cart.push({ id: productId, quantity: 1 });
             }
             updateCartBadge();
-            // show feedback (simple alert)
             alert(`${product.name} added to cart!`);
         }
 
@@ -729,7 +682,6 @@
             } else {
                 wishlist.push(productId);
             }
-            // update UI if panel is wishlist
             if (panel.classList.contains('open') && panelTitle.innerText === 'Wishlist') {
                 updatePanelContent();
             }
@@ -748,7 +700,7 @@
         }
 
         // ============================================================
-        //  SIDE PANEL (CART / WISHLIST)
+        //  SIDE PANEL
         // ============================================================
         function updatePanelContent() {
             const title = panelTitle.innerText;
@@ -805,7 +757,6 @@
                     el.addEventListener('click', function() {
                         toggleWishlist(parseInt(this.dataset.id));
                         updatePanelContent();
-                        // re-render current view to update buttons
                         if (currentView === 'home') renderHome();
                         else if (currentView === 'category') renderCategory(window._lastCategory || 'unisex');
                         else if (currentView === 'product') renderProductDetail(parseInt(this.dataset.id));
@@ -821,15 +772,8 @@
         }
 
         closePanel.addEventListener('click', () => panel.classList.remove('open'));
-
-        cartToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            openPanel('cart');
-        });
-        wishlistToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            openPanel('wishlist');
-        });
+        cartToggle.addEventListener('click', (e) => { e.preventDefault(); openPanel('cart'); });
+        wishlistToggle.addEventListener('click', (e) => { e.preventDefault(); openPanel('wishlist'); });
 
         // ============================================================
         //  SEARCH
@@ -845,7 +789,6 @@
                 if (results.length === 0) {
                     alert('No products found.');
                 } else {
-                    // show search results as a view
                     app.innerHTML = `
                         <div class="view-container">
                             <div style="max-width:1400px;margin:0 auto;padding:0 1rem;">
@@ -863,7 +806,7 @@
         });
 
         // ============================================================
-        //  HERO SLIDER INIT
+        //  HERO SLIDER
         // ============================================================
         let sliderInterval;
         function initSlider() {
@@ -919,23 +862,19 @@
         window.addEventListener('hashchange', handleHash);
 
         // ============================================================
-        //  LOGO CLICK
+        //  LOGO & NAV LINKS
         // ============================================================
         document.getElementById('logo-link').addEventListener('click', (e) => {
             e.preventDefault();
             navigateTo('home');
         });
 
-        // ============================================================
-        //  NAV LINKS
-        // ============================================================
         document.querySelectorAll('#main-nav a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const view = link.dataset.view;
                 if (view === 'home') navigateTo('home');
                 else if (view === 'collections') {
-                    // show a category selector? we'll just go to home and scroll to categories
                     navigateTo('home');
                     setTimeout(() => {
                         document.querySelector('.category-boxes').scrollIntoView({ behavior: 'smooth' });
@@ -947,7 +886,6 @@
         // ============================================================
         //  INIT
         // ============================================================
-        // handle initial load
         if (window.location.hash) {
             handleHash();
         } else {
